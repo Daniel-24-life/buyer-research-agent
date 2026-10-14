@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340" role="img" aria-labelledby="title desc">
+<title id="title">外贸买家研究 Agent</title><desc id="desc">先找到需求，再核企业、联系与证据缺口</desc>
+<rect width="1280" height="340" rx="20" fill="#f2f6fa"/>
+<path d="M900 0V340M970 0V340M1040 0V340M1110 0V340M1180 0V340M850 60H1280M850 130H1280M850 200H1280M850 270H1280" stroke="#526b80" opacity=".12"/>
+<text x="60" y="62" fill="#28aaa1" font-family="system-ui,sans-serif" font-size="16" letter-spacing="3">DANIEL / AI PRODUCT &amp; AGENT ENGINEERING</text>
+<text x="60" y="144" fill="#152f43" font-family="system-ui,Microsoft YaHei,sans-serif" font-size="43" font-weight="600">外贸买家研究 Agent</text>
+<text fill="#526b80" font-family="system-ui,Microsoft YaHei,sans-serif" font-size="18"><tspan x="60" y="190">先找到需求，再核企业、联系与证据缺口</tspan></text>
+<rect x="60" y="241" width="490" height="44" rx="8" fill="#e5edf4"/>
+<text x="80" y="269" fill="#152f43" font-family="system-ui,Microsoft YaHei,sans-serif" font-size="15">固定合成样例 · 本地队列 · 无真实外发</text>
+<path d="M870 245L945 175L1020 218L1105 105L1200 145" stroke="#28aaa1" stroke-width="3" fill="none"/>
+<circle cx="945" cy="175" r="9" fill="#f2f6fa" stroke="#28aaa1" stroke-width="3"/>
+<circle cx="1020" cy="218" r="9" fill="#f2f6fa" stroke="#28aaa1" stroke-width="3"/>
+<circle cx="1105" cy="105" r="11" fill="#eab56b"/>
+<text x="884" y="303" fill="#526b80" font-family="monospace" font-size="13">PROBLEM → WORKFLOW → EVIDENCE</text>
+</svg>

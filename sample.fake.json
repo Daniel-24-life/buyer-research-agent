@@ -1,0 +1,10 @@
+{
+  "synthetic": true,
+  "asof": "2026-10-14",
+  "records": [
+    {"id":"BUYER-DEMO-01","name":"演示买家 A · 安装服务","kind":"rfq","published_on":"2026-10-10","closes_on":"2026-10-20","quote":"2026-10-10：样例采购请求，寻找室内筒灯样品。","source":"https://buyer-a.invalid/sample-rfq","identity_verified":true,"product_match":true,"contact_verified":true,"source_matched":true,"next_action":"人工核对规格与采购负责人；演示不发送消息。"},
+    {"id":"BUYER-DEMO-02","name":"演示买家 B · 项目集成","kind":"project","published_on":"2026-10-08","quote":"2026-10-08：样例门店改造项目，采购阶段尚未确认。","source":"https://buyer-b.invalid/sample-project","identity_verified":true,"product_match":true,"contact_verified":true,"source_matched":true,"next_action":"核查实际采购链，不把项目公告当作求购。"},
+    {"id":"BUYER-DEMO-03","name":"演示买家 C · 目录线索","kind":"catalog","published_on":"2026-10-09","quote":"样例产品目录。","source":"https://buyer-c.invalid/catalog","identity_verified":true,"product_match":true,"contact_verified":false,"source_matched":true,"next_action":"补需求与联系证据；不计入主名单。"},
+    {"id":"BUYER-DEMO-04","name":"演示买家 D · 过期需求","kind":"rfq","published_on":"2026-07-01","closes_on":"2026-07-20","quote":"2026-07-01：已截止的样例需求。","source":"https://buyer-d.invalid/expired","identity_verified":true,"product_match":true,"contact_verified":true,"source_matched":true,"next_action":"保留历史记录，重新寻找有效需求。"}
+  ]
+}

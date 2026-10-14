@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>外贸买家研究 · 离线工作台</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#product">跳到产品输入</a>
+  <div class="shell">
+    <aside><div class="brand"><span class="mark">↗</span><div>买家研究<span>Evidence before outreach</span></div></div>
+      <div class="nav active">01　研究工作台</div><a class="nav" href="#results">02　需求与证据</a><a class="nav" href="#queue">03　任务队列</a>
+      <div class="aside-note">离线公开演示<br>虚构企业 · 固定样例<br>无模型或搜索调用</div>
+    </aside>
+    <main>
+      <header><span>AIfile / Buyer Research</span><span class="badge">SYNTHETIC DEMO</span></header>
+      <section class="heading"><p class="eyebrow">产品 → 需求 → 企业核验 → 人工复核</p><h1>先找到需求，再判断买家。</h1><p>从原文、日期与联系证据理解每条线索。项目机会与明确求购分开呈现。</p></section>
+      <div class="top-grid">
+        <section class="panel"><h2>创建演示任务</h2><form id="form"><label for="product">产品或品类</label><input id="product" required maxlength="120" value="室内筒灯 / LED 灯带"><p class="hint">输入仅保存为演示任务名称。任何品类都使用同一组固定灯具样例。</p><button id="enqueue" class="primary" type="submit">加入演示队列 ↗</button><p id="message" role="status" aria-live="polite"></p></form></section>
+        <section class="panel boundary"><span class="eyebrow">公开运行边界</span><h2>4 条合成记录，3 类判断</h2><p>演示完整记录已知、未知和下一步。所有来源使用不可联系的 <code>.invalid</code> 域名。</p><div class="boundary-line"><span>采购权限</span><strong>未知</strong></div><div class="boundary-line"><span>真实外发 / 订单</span><strong>0 / 0</strong></div><div class="boundary-line"><span>分类基准日期</span><strong>2026-10-14</strong></div></section>
+      </div>
+      <section id="results"><div class="section-head"><div><p class="eyebrow">REVIEW QUEUE</p><h2>需求与证据</h2></div><button id="export" type="button">导出演示 JSON ↓</button></div>
+        <div id="counts" class="counts" aria-live="polite"></div>
+        <div class="filters" aria-label="需求分类"><button data-filter="all" aria-pressed="true">全部</button><button data-filter="explicit" aria-pressed="false">明确需求</button><button data-filter="opportunity" aria-pressed="false">采购机会</button><button data-filter="pending" aria-pressed="false">待核验</button></div>
+        <div id="records" class="records"></div>
+      </section>
+      <section id="queue" class="panel"><div class="section-head"><div><p class="eyebrow">DURABLE LOCAL QUEUE</p><h2>任务队列</h2></div><div class="actions"><button id="pause">暂停</button><button id="resume">恢复</button><button id="next" class="primary">完成下一条演示任务</button></div></div><p id="queueState" role="status"></p><div id="tasks"></div><p class="hint">按提交顺序处理。每次点击完成一条本地任务；没有后台研究。暂停后不领取任务，重启保留队列。</p></section>
+      <footer>公开代码演示 · 样例核验标志预置，不代表访问过来源网页 · 真实研究执行链保留私有</footer>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
