@@ -1,31 +1,95 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>外贸买家研究 · 离线工作台</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <a class="skip" href="#product">跳到产品输入</a>
+  <a class="skip" href="#workspace">跳到需求与证据</a>
   <div class="shell">
-    <aside><div class="brand"><span class="mark">↗</span><div>买家研究<span>Evidence before outreach</span></div></div>
-      <div class="nav active">01　研究工作台</div><a class="nav" href="#results">02　需求与证据</a><a class="nav" href="#queue">03　任务队列</a>
-      <div class="aside-note">离线公开演示<br>虚构企业 · 固定样例<br>无模型或搜索调用</div>
+    <aside class="sidebar">
+      <a class="brand" href="#workspace" aria-label="买家研究工作台首页">
+        <span class="mark" aria-hidden="true">↗</span>
+        <span>买家研究<small>Evidence before outreach</small></span>
+      </a>
+      <nav aria-label="工作台导航">
+        <a class="nav active" href="#workspace" aria-current="page"><span>01</span> 研究工作台</a>
+        <a class="nav" href="#workspace"><span>02</span> 需求与证据</a>
+        <a class="nav" href="#operations"><span>03</span> 创建与队列</a>
+      </nav>
+      <p class="aside-note">离线公开演示<br>虚构企业 · 固定样例<br>无模型或搜索调用</p>
     </aside>
+
     <main>
-      <header><span>AIfile / Buyer Research</span><span class="badge">SYNTHETIC DEMO</span></header>
-      <section class="heading"><p class="eyebrow">产品 → 需求 → 企业核验 → 人工复核</p><h1>先找到需求，再判断买家。</h1><p>从原文、日期与联系证据理解每条线索。项目机会与明确求购分开呈现。</p></section>
-      <div class="top-grid">
-        <section class="panel"><h2>创建演示任务</h2><form id="form"><label for="product">产品或品类</label><input id="product" required maxlength="120" value="室内筒灯 / LED 灯带"><p class="hint">输入仅保存为演示任务名称。任何品类都使用同一组固定灯具样例。</p><button id="enqueue" class="primary" type="submit">加入演示队列 ↗</button><p id="message" role="status" aria-live="polite"></p></form></section>
-        <section class="panel boundary"><span class="eyebrow">公开运行边界</span><h2>4 条合成记录，3 类判断</h2><p>演示完整记录已知、未知和下一步。所有来源使用不可联系的 <code>.invalid</code> 域名。</p><div class="boundary-line"><span>采购权限</span><strong>未知</strong></div><div class="boundary-line"><span>真实外发 / 订单</span><strong>0 / 0</strong></div><div class="boundary-line"><span>分类基准日期</span><strong>2026-10-14</strong></div></section>
-      </div>
-      <section id="results"><div class="section-head"><div><p class="eyebrow">REVIEW QUEUE</p><h2>需求与证据</h2></div><button id="export" type="button">导出演示 JSON ↓</button></div>
-        <div id="counts" class="counts" aria-live="polite"></div>
-        <div class="filters" aria-label="需求分类"><button data-filter="all" aria-pressed="true">全部</button><button data-filter="explicit" aria-pressed="false">明确需求</button><button data-filter="opportunity" aria-pressed="false">采购机会</button><button data-filter="pending" aria-pressed="false">待核验</button></div>
-        <div id="records" class="records"></div>
+      <header class="topbar">
+        <span>AIfile / Buyer Research</span>
+        <div class="connection" data-state="loading">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="connectionStatus" role="status" aria-live="polite">正在连接本地服务</span>
+          <button id="retry" class="text-button" type="button" hidden>重试</button>
+        </div>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">产品 → 需求 → 企业核验 → 人工复核</p>
+        <h1 id="page-title">先审证据，再决定下一步。</h1>
+        <p>按需求性质缩小范围，在一处核对原文、日期、缺口与下一动作。</p>
       </section>
-      <section id="queue" class="panel"><div class="section-head"><div><p class="eyebrow">DURABLE LOCAL QUEUE</p><h2>任务队列</h2></div><div class="actions"><button id="pause">暂停</button><button id="resume">恢复</button><button id="next" class="primary">完成下一条演示任务</button></div></div><p id="queueState" role="status"></p><div id="tasks"></div><p class="hint">按提交顺序处理。每次点击完成一条本地任务；没有后台研究。暂停后不领取任务，重启保留队列。</p></section>
-      <footer>公开代码演示 · 样例核验标志预置，不代表访问过来源网页 · 真实研究执行链保留私有</footer>
+
+      <section id="workspace" class="workspace" aria-labelledby="workspace-title">
+        <div class="workspace-head">
+          <div><p class="eyebrow">需求分类 / 证据主区域</p><h2 id="workspace-title">研究复核台</h2></div>
+          <button id="export" type="button" disabled>导出演示 JSON</button>
+        </div>
+        <div id="counts" class="counts" aria-live="polite" aria-label="分类数量"><p class="skeleton-line">正在读取合成记录…</p></div>
+        <div class="filters" role="group" aria-label="按需求分类筛选">
+          <button data-filter="all" aria-pressed="true">全部</button>
+          <button data-filter="explicit" aria-pressed="false">明确需求</button>
+          <button data-filter="opportunity" aria-pressed="false">采购机会</button>
+          <button data-filter="pending" aria-pressed="false">待核验</button>
+        </div>
+        <div class="review-layout">
+          <section class="record-list-panel" aria-labelledby="record-list-title">
+            <div class="subhead"><h3 id="record-list-title">记录</h3><span id="resultCount">加载中</span></div>
+            <div id="records" class="records" aria-live="polite" aria-busy="true"><p class="empty">正在连接本地服务…</p></div>
+          </section>
+          <article id="detail" class="detail" aria-labelledby="detailTitle" aria-live="polite">
+            <div class="detail-empty"><p class="eyebrow">选中详情</p><h3 id="detailTitle">等待记录</h3><p>连接完成后，从左侧选择一条记录查看完整证据。</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="operations" class="operations" aria-labelledby="operations-title">
+        <div class="section-title"><p class="eyebrow">辅助操作</p><h2 id="operations-title">创建与队列</h2><p>这些操作只写入本地演示数据库，不会触发研究、外联或订单。</p></div>
+        <div class="operations-grid">
+          <section class="panel" aria-labelledby="create-title">
+            <h3 id="create-title">创建演示任务</h3>
+            <form id="form">
+              <label for="product">产品或品类</label>
+              <input id="product" required maxlength="120" value="室内筒灯 / LED 灯带" aria-describedby="product-hint">
+              <p id="product-hint" class="hint">仅保存为任务名称；任何输入都使用同一组固定灯具样例。</p>
+              <button id="enqueue" class="primary" type="submit" disabled>加入演示队列</button>
+              <p id="message" class="form-message" role="status" aria-live="polite"></p>
+              <p id="errorMessage" class="error-message" role="alert"></p>
+            </form>
+          </section>
+          <section class="panel boundary" aria-labelledby="boundary-title">
+            <p class="eyebrow">公开运行边界</p><h3 id="boundary-title">固定样例，不连接真实买家</h3>
+            <p>所有来源使用不可联系的 <code>.invalid</code> 域名，核验标志为预置夹具。</p>
+            <dl class="boundary-list">
+              <div><dt>采购权限</dt><dd>未知</dd></div><div><dt>真实外发 / 订单</dt><dd>0 / 0</dd></div><div><dt>分类基准日期</dt><dd id="asof">连接后显示</dd></div>
+            </dl>
+          </section>
+          <section class="panel queue-panel" aria-labelledby="queue-title">
+            <div class="queue-head"><div><p class="eyebrow">本地持久队列</p><h3 id="queue-title">任务队列</h3></div><div class="actions"><button id="pause" type="button" disabled>暂停</button><button id="resume" type="button" disabled>恢复</button><button id="next" class="primary" type="button" disabled>完成下一条</button></div></div>
+            <p id="queueState" role="status">连接后可操作队列。</p><div id="tasks"><p class="empty">尚未读取任务。</p></div>
+            <p class="hint">按提交顺序处理；暂停后不领取任务，重启保留队列。</p>
+          </section>
+        </div>
+      </section>
+      <footer>公开代码演示 · 不代表访问过来源网页 · 真实研究执行链保留私有</footer>
     </main>
   </div>
   <script src="/app.js"></script>
