@@ -9,3 +9,17 @@ node_modules/
 npm-debug.log*
 .DS_Store
 Thumbs.db
+
+# Local secrets and generated artifacts
+.env*
+*.pem
+*.key
+*.pfx
+*.p12
+Cookies
+cookies.json
+.venv/
+.next/
+.astro/
+*.log
+*.tmp
