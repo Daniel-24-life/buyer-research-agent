@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-23
+
+- Added light and dark covers for demand evidence, missing facts and a review queue.
+- Consolidated the default English overview and kept the Chinese entry.
+
 ## v1.1 — 2026-10-15
 
 - Reorganized the workbench around demand classification and a persistent selected-record evidence detail, with creation and queue controls as supporting operations.

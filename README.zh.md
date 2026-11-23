@@ -1,13 +1,14 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/cover-dark.svg" />
-  <img src="docs/assets/cover-light.svg" alt="buyer-research-agent" width="1280" />
+  <source media="(prefers-color-scheme: dark)" srcset="docs/cover-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/cover-light.svg">
+  <img src="docs/cover-light.svg" alt="Project overview" width="1280">
 </picture>
 
 # 外贸买家研究 Agent
 
 [本轮界面验证](docs/UI_QA.md)
 
-[完整作品目录](https://github.com/Daniel-24-life/AIfile)
+[完整作品目录](https://github.com/Daniel-24-life/portfolio)
 
 一个可独立运行的离线公开重建：用固定合成证据演示需求分类，并用 SQLite 保存本地任务队列。它面向想了解“先找需求、再核企业与联系证据”的老板、销售和工程团队。
 
@@ -66,4 +67,4 @@ python -B -m unittest discover -s tests -v
 node --check dist/app.js
 ```
 
-[英文说明](README.en.md)。上游公开项目：[Daniel-24-life/AIfile](https://github.com/Daniel-24-life/AIfile)。
+[英文说明](README.md)。上游公开项目：[Daniel-24-life/portfolio](https://github.com/Daniel-24-life/portfolio)。
